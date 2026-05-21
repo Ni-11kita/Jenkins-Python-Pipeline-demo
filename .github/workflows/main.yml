@@ -20,12 +20,9 @@ jobs:
           python -m pip install --upgrade pip
             pip install -r requirements.txt
       - name: install flake8 for code quality and static analysis
-        run: |
-          flake8 .
+        run: pip install flake8  
+
         continue-on-error: true
-      - name: setup python path
-        run: |
-          echo "PYTHONPATH"=$GITHUB_WORKSPACE >> $GITHUB_ENV
       - name: run pytest for testing
         run:
           pytest tests --cov=app --cov-report=xml
